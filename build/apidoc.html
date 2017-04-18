@@ -1,0 +1,2490 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/zaggino/z-schema"
+
+    >z-schema (v3.18.2)</a>
+</h1>
+<h4>JSON schema validator</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema">module z-schema</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.z-schema">
+            function <span class="apidocSignatureSpan"></span>z-schema
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report">
+            function <span class="apidocSignatureSpan">z-schema.</span>Report
+            <span class="apidocSignatureSpan">(parentOrOptions, reportOptions)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.getDefaultOptions">
+            function <span class="apidocSignatureSpan">z-schema.</span>getDefaultOptions
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.getRegisteredFormats">
+            function <span class="apidocSignatureSpan">z-schema.</span>getRegisteredFormats
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.registerFormat">
+            function <span class="apidocSignatureSpan">z-schema.</span>registerFormat
+            <span class="apidocSignatureSpan">(formatName, validatorFunction)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.setSchemaReader">
+            function <span class="apidocSignatureSpan">z-schema.</span>setSchemaReader
+            <span class="apidocSignatureSpan">(schemaReader)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.toString">
+            function <span class="apidocSignatureSpan">z-schema.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.unregisterFormat">
+            function <span class="apidocSignatureSpan">z-schema.</span>unregisterFormat
+            <span class="apidocSignatureSpan">(formatName)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>FormatValidators</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>JsonValidation</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>Report.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>SchemaCache</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>SchemaCompilation</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>SchemaValidation</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">z-schema.</span>Utils</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.FormatValidators">module z-schema.FormatValidators</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.date">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>date
+            <span class="apidocSignatureSpan">(date)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.date-time">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>date-time
+            <span class="apidocSignatureSpan">(dateTime)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.email">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>email
+            <span class="apidocSignatureSpan">(email)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.host-name">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>host-name
+            <span class="apidocSignatureSpan">(hostname)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.hostname">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>hostname
+            <span class="apidocSignatureSpan">(hostname)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.ipv4">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>ipv4
+            <span class="apidocSignatureSpan">(ipv4)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.ipv6">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>ipv6
+            <span class="apidocSignatureSpan">(ipv6)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.regex">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>regex
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.strict-uri">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>strict-uri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.FormatValidators.uri">
+            function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>uri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.JsonValidation">module z-schema.JsonValidation</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.JsonValidation.validate">
+            function <span class="apidocSignatureSpan">z-schema.JsonValidation.</span>validate
+            <span class="apidocSignatureSpan">(report, schema, json)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.Report">module z-schema.Report</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.Report">
+            function <span class="apidocSignatureSpan">z-schema.</span>Report
+            <span class="apidocSignatureSpan">(parentOrOptions, reportOptions)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.Report.prototype">module z-schema.Report.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.addAsyncTask">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addAsyncTask
+            <span class="apidocSignatureSpan">(fn, args, asyncTaskResultProcessFn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.addCustomError">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addCustomError
+            <span class="apidocSignatureSpan">(errorCode, errorMessage, params, subReports, schemaDescription)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.addError">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addError
+            <span class="apidocSignatureSpan">(errorCode, params, subReports, schemaDescription)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.getPath">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>getPath
+            <span class="apidocSignatureSpan">(returnPathAsString)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.getSchemaId">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>getSchemaId
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.hasError">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>hasError
+            <span class="apidocSignatureSpan">(errorCode, params)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.isValid">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>isValid
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Report.prototype.processAsyncTasks">
+            function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>processAsyncTasks
+            <span class="apidocSignatureSpan">(timeout, callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.SchemaCache">module z-schema.SchemaCache</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.cacheSchemaByUri">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>cacheSchemaByUri
+            <span class="apidocSignatureSpan">(uri, schema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.checkCacheForUri">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>checkCacheForUri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.getRemotePath">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getRemotePath
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.getSchema">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchema
+            <span class="apidocSignatureSpan">(report, schema)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.getSchemaByReference">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchemaByReference
+            <span class="apidocSignatureSpan">(report, key)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.getSchemaByUri">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchemaByUri
+            <span class="apidocSignatureSpan">(report, uri, root)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCache.removeFromCacheByUri">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>removeFromCacheByUri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.SchemaCompilation">module z-schema.SchemaCompilation</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaCompilation.compileSchema">
+            function <span class="apidocSignatureSpan">z-schema.SchemaCompilation.</span>compileSchema
+            <span class="apidocSignatureSpan">(report, schema)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.SchemaValidation">module z-schema.SchemaValidation</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.SchemaValidation.validateSchema">
+            function <span class="apidocSignatureSpan">z-schema.SchemaValidation.</span>validateSchema
+            <span class="apidocSignatureSpan">(report, schema)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.z-schema.Utils">module z-schema.Utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.areEqual">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>areEqual
+            <span class="apidocSignatureSpan">(json1, json2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.clone">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>clone
+            <span class="apidocSignatureSpan">(src)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.cloneDeep">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>cloneDeep
+            <span class="apidocSignatureSpan">(src)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.difference">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>difference
+            <span class="apidocSignatureSpan">(bigSet, subSet)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.isAbsoluteUri">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>isAbsoluteUri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.isRelativeUri">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>isRelativeUri
+            <span class="apidocSignatureSpan">(uri)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.isUniqueArray">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>isUniqueArray
+            <span class="apidocSignatureSpan">(arr, indexes)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.ucs2decode">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>ucs2decode
+            <span class="apidocSignatureSpan">(string)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.z-schema.Utils.whatIs">
+            function <span class="apidocSignatureSpan">z-schema.Utils.</span>whatIs
+            <span class="apidocSignatureSpan">(what)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema" id="apidoc.module.z-schema">module z-schema</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.z-schema" id="apidoc.element.z-schema.z-schema">
+        function <span class="apidocSignatureSpan"></span>z-schema
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ZSchema(options) {
+    this.cache = {};
+    this.referenceCache = [];
+
+    this.setRemoteReference(&#x22;http://json-schema.org/draft-04/schema&#x22;, Draft4Schema);
+    this.setRemoteReference(&#x22;http://json-schema.org/draft-04/hyper-schema&#x22;, Draft4HyperSchema);
+
+    // options
+    if (typeof options === &#x22;object&#x22;) {
+        var keys = Object.keys(options),
+            idx = keys.length,
+            key;
+
+        // check that the options are correctly configured
+        while (idx--) {
+            key = keys[idx];
+            if (defaultOptions[key] === undefined) {
+                throw new Error(&#x22;Unexpected option passed to constructor: &#x22; + key);
+            }
+        }
+
+        // copy the default options into passed options
+        keys = Object.keys(defaultOptions);
+        idx = keys.length;
+        while (idx--) {
+            key = keys[idx];
+            if (options[key] === undefined) {
+                options[key] = Utils.clone(defaultOptions[key]);
+            }
+        }
+
+        this.options = options;
+    } else {
+        this.options = Utils.clone(defaultOptions);
+    }
+
+    if (this.options.strictMode === true) {
+        this.options.forceAdditional  = true;
+        this.options.forceItems       = true;
+        this.options.forceMaxLength   = true;
+        this.options.forceProperties  = true;
+        this.options.noExtraKeywords  = true;
+        this.options.noTypeless       = true;
+        this.options.noEmptyStrings   = true;
+        this.options.noEmptyArrays    = true;
+    }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report" id="apidoc.element.z-schema.Report">
+        function <span class="apidocSignatureSpan">z-schema.</span>Report
+        <span class="apidocSignatureSpan">(parentOrOptions, reportOptions)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Report(parentOrOptions, reportOptions) {
+    this.parentReport = parentOrOptions instanceof Report ?
+                            parentOrOptions :
+                            undefined;
+
+    this.options = parentOrOptions instanceof Report ?
+                       parentOrOptions.options :
+                       parentOrOptions || {};
+
+    this.reportOptions = reportOptions || {};
+
+    this.errors = [];
+    this.path = [];
+    this.asyncTasks = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.getDefaultOptions" id="apidoc.element.z-schema.getDefaultOptions">
+        function <span class="apidocSignatureSpan">z-schema.</span>getDefaultOptions
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getDefaultOptions = function () {
+    return Utils.cloneDeep(defaultOptions);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.getRegisteredFormats" id="apidoc.element.z-schema.getRegisteredFormats">
+        function <span class="apidocSignatureSpan">z-schema.</span>getRegisteredFormats
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getRegisteredFormats = function () {
+    return Object.keys(FormatValidators);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    setTimeout(function () {
+        callback(str === &#x22;xxx&#x22;);
+    }, 1);
+});
+```
+##Helper method to check the formats that have been registered
+```javascript
+var registeredFormats = ZSchema.<span class="apidocCodeKeywordSpan">getRegisteredFormats</span>();
+//registeredFormats will now contain an array of all formats that have been registered with z-schema
+```
+##Automatic downloading of remote schemas
+
+Automatic downloading of remote schemas was removed from version ```3.x``` but is still possible with a bit of extra code,
+see [this test](test/spec/AutomaticSchemaLoadingSpec.js) for more information on this.
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.registerFormat" id="apidoc.element.z-schema.registerFormat">
+        function <span class="apidocSignatureSpan">z-schema.</span>registerFormat
+        <span class="apidocSignatureSpan">(formatName, validatorFunction)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">registerFormat = function (formatName, validatorFunction) {
+    FormatValidators[formatName] = validatorFunction;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```
+
+##Register a custom format
+
+You can register any format of your own. Your sync validator function should always respond with a boolean:
+
+```javascript
+ZSchema.<span class="apidocCodeKeywordSpan">registerFormat</span>(&#x22;xstring&#x22;, function (str) {
+    return str === &#x22;xxx&#x22;;
+});
+```
+
+Async format validators are also supported, they should accept two arguments, value and a callback to which they need to respond
+:
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.setSchemaReader" id="apidoc.element.z-schema.setSchemaReader">
+        function <span class="apidocSignatureSpan">z-schema.</span>setSchemaReader
+        <span class="apidocSignatureSpan">(schemaReader)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setSchemaReader = function (schemaReader) {
+    ZSchema.schemaReader = schemaReader;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+}
+```
+
+If you&#x27;re able to load schemas synchronously, you can use `ZSchema.setSchemaReader` feature:
+
+```javascript
+ZSchema.<span class="apidocCodeKeywordSpan">setSchemaReader</span>(function (uri) {
+    var someFilename = path.resolve(__dirname, &#x22;..&#x22;, &#x22;schemas&#x22;, uri + &#x22;.json&#x22;);
+    return JSON.parse(fs.readFileSync(someFilename, &#x22;utf8&#x22;));
+});
+```
+
+#Features
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.toString" id="apidoc.element.z-schema.toString">
+        function <span class="apidocSignatureSpan">z-schema.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // the child instance must be valid against the corresponding schema in the &#x22;items&#x22; array;
+    // otherwise, it must be valid against the schema defined by &#x22;additionalItems&#x22;.
+    if (Array.isArray(schema.items)) {
+
+while (idx--) {
+    // equal to doesnt make sense here
+    if (idx &#x3c; schema.items.length) {
+        report.path.push(idx.<span class="apidocCodeKeywordSpan">toString</span>());
+        exports.validate.call(this, report, schema.items[idx], json[idx]);
+        report.path.pop();
+    } else {
+        // might be boolean, so check that it&#x27;s an object
+        if (typeof schema.additionalItems === &#x22;object&#x22;) {
+            report.path.push(idx.toString());
+            exports.validate.call(this, report, schema.additionalItems, json[idx]);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.unregisterFormat" id="apidoc.element.z-schema.unregisterFormat">
+        function <span class="apidocSignatureSpan">z-schema.</span>unregisterFormat
+        <span class="apidocSignatureSpan">(formatName)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">unregisterFormat = function (formatName) {
+    delete FormatValidators[formatName];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.FormatValidators" id="apidoc.module.z-schema.FormatValidators">module z-schema.FormatValidators</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.date" id="apidoc.element.z-schema.FormatValidators.date">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>date
+        <span class="apidocSignatureSpan">(date)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date = function (date) {
+    if (typeof date !== &#x22;string&#x22;) {
+        return true;
+    }
+    // full-date from http://tools.ietf.org/html/rfc3339#section-5.6
+    var matches = /^([0-9]{4})-([0-9]{2})-([0-9]{2})$/.exec(date);
+    if (matches === null) {
+        return false;
+    }
+    // var year = matches[1];
+    // var month = matches[2];
+    // var day = matches[3];
+    if (matches[2] &#x3c; &#x22;01&#x22; || matches[2] &#x3e; &#x22;12&#x22; || matches[3] &#x3c; &#x22;01&#x22; || matches[3] &#x3e; &#x22;31&#x22;) {
+        return false;
+    }
+    return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+&#x22;date-time&#x22;: function (dateTime) {
+    if (typeof dateTime !== &#x22;string&#x22;) {
+        return true;
+    }
+    // date-time from http://tools.ietf.org/html/rfc3339#section-5.6
+    var s = dateTime.toLowerCase().split(&#x22;t&#x22;);
+    if (!FormatValidators.<span class="apidocCodeKeywordSpan">date</span>(s[0])) {
+        return false;
+    }
+    var matches = /^([0-9]{2}):([0-9]{2}):([0-9]{2})(.[0-9]+)?(z|([+-][0-9]{2}:[0-9]{2}))$/.exec(s[1]);
+    if (matches === null) {
+        return false;
+    }
+    // var hour = matches[1];
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.date-time" id="apidoc.element.z-schema.FormatValidators.date-time">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>date-time
+        <span class="apidocSignatureSpan">(dateTime)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">date-time = function (dateTime) {
+    if (typeof dateTime !== &#x22;string&#x22;) {
+        return true;
+    }
+    // date-time from http://tools.ietf.org/html/rfc3339#section-5.6
+    var s = dateTime.toLowerCase().split(&#x22;t&#x22;);
+    if (!FormatValidators.date(s[0])) {
+        return false;
+    }
+    var matches = /^([0-9]{2}):([0-9]{2}):([0-9]{2})(.[0-9]+)?(z|([+-][0-9]{2}:[0-9]{2}))$/.exec(s[1]);
+    if (matches === null) {
+        return false;
+    }
+    // var hour = matches[1];
+    // var minute = matches[2];
+    // var second = matches[3];
+    // var fraction = matches[4];
+    // var timezone = matches[5];
+    if (matches[1] &#x3e; &#x22;23&#x22; || matches[2] &#x3e; &#x22;59&#x22; || matches[3] &#x3e; &#x22;59&#x22;) {
+        return false;
+    }
+    return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.email" id="apidoc.element.z-schema.FormatValidators.email">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>email
+        <span class="apidocSignatureSpan">(email)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">email = function (email) {
+    if (typeof email !== &#x22;string&#x22;) {
+        return true;
+    }
+    return validator.isEmail(email, { &#x22;require_tld&#x22;: true });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.host-name" id="apidoc.element.z-schema.FormatValidators.host-name">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>host-name
+        <span class="apidocSignatureSpan">(hostname)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">host-name = function (hostname) {
+    return FormatValidators.hostname.call(this, hostname);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.hostname" id="apidoc.element.z-schema.FormatValidators.hostname">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>hostname
+        <span class="apidocSignatureSpan">(hostname)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hostname = function (hostname) {
+    if (typeof hostname !== &#x22;string&#x22;) {
+        return true;
+    }
+<span class="apidocCodeCommentSpan">    /*
+        http://json-schema.org/latest/json-schema-validation.html#anchor114
+        A string instance is valid against this attribute if it is a valid
+        representation for an Internet host name, as defined by RFC 1034, section 3.1 [RFC1034].
+
+        http://tools.ietf.org/html/rfc1034#section-3.5
+
+        &#x3c;digit&#x3e; ::= any one of the ten digits 0 through 9
+        var digit = /[0-9]/;
+
+        &#x3c;letter&#x3e; ::= any one of the 52 alphabetic characters A through Z in upper case and a through z in lower case
+        var letter = /[a-zA-Z]/;
+
+        &#x3c;let-dig&#x3e; ::= &#x3c;letter&#x3e; | &#x3c;digit&#x3e;
+        var letDig = /[0-9a-zA-Z]/;
+
+        &#x3c;let-dig-hyp&#x3e; ::= &#x3c;let-dig&#x3e; | &#x22;-&#x22;
+        var letDigHyp = /[-0-9a-zA-Z]/;
+
+        &#x3c;ldh-str&#x3e; ::= &#x3c;let-dig-hyp&#x3e; | &#x3c;let-dig-hyp&#x3e; &#x3c;ldh-str&#x3e;
+        var ldhStr = /[-0-9a-zA-Z]+/;
+
+        &#x3c;label&#x3e; ::= &#x3c;letter&#x3e; [ [ &#x3c;ldh-str&#x3e; ] &#x3c;let-dig&#x3e; ]
+        var label = /[a-zA-Z](([-0-9a-zA-Z]+)?[0-9a-zA-Z])?/;
+
+        &#x3c;subdomain&#x3e; ::= &#x3c;label&#x3e; | &#x3c;subdomain&#x3e; &#x22;.&#x22; &#x3c;label&#x3e;
+        var subdomain = /^[a-zA-Z](([-0-9a-zA-Z]+)?[0-9a-zA-Z])?(\.[a-zA-Z](([-0-9a-zA-Z]+)?[0-9a-zA-Z])?)*$/;
+
+        &#x3c;domain&#x3e; ::= &#x3c;subdomain&#x3e; | &#x22; &#x22;
+        var domain = null;
+    */
+</span>    var valid = /^[a-zA-Z](([-0-9a-zA-Z]+)?[0-9a-zA-Z])?(\.[a-zA-Z](([-0-9a-zA-Z]+)?[0-9a-zA-Z])?)*$/.test(hostname);
+    if (valid) {
+        // the sum of all label octets and label lengths is limited to 255.
+        if (hostname.length &#x3e; 255) { return false; }
+        // Each node has a label, which is zero to 63 octets in length
+        var labels = hostname.split(&#x22;.&#x22;);
+        for (var i = 0; i &#x3c; labels.length; i++) { if (labels[i].length &#x3e; 63) { return false; } }
+    }
+    return valid;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.ipv4" id="apidoc.element.z-schema.FormatValidators.ipv4">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>ipv4
+        <span class="apidocSignatureSpan">(ipv4)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ipv4 = function (ipv4) {
+    if (typeof ipv4 !== &#x22;string&#x22;) { return true; }
+    return validator.isIP(ipv4, 4);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.ipv6" id="apidoc.element.z-schema.FormatValidators.ipv6">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>ipv6
+        <span class="apidocSignatureSpan">(ipv6)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ipv6 = function (ipv6) {
+    if (typeof ipv6 !== &#x22;string&#x22;) { return true; }
+    return validator.isIP(ipv6, 6);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.regex" id="apidoc.element.z-schema.FormatValidators.regex">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>regex
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">regex = function (str) {
+    try {
+        RegExp(str);
+        return true;
+    } catch (e) {
+        return false;
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.strict-uri" id="apidoc.element.z-schema.FormatValidators.strict-uri">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>strict-uri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">strict-uri = function (uri) {
+    return typeof uri !== &#x22;string&#x22; || validator.isURL(uri);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.FormatValidators.uri" id="apidoc.element.z-schema.FormatValidators.uri">
+        function <span class="apidocSignatureSpan">z-schema.FormatValidators.</span>uri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">uri = function (uri) {
+    if (this.options.strictUris) {
+        return FormatValidators[&#x22;strict-uri&#x22;].apply(this, arguments);
+    }
+    // https://github.com/zaggino/z-schema/issues/18
+    // RegExp from http://tools.ietf.org/html/rfc3986#appendix-B
+    return typeof uri !== &#x22;string&#x22; || RegExp(&#x22;^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?&#x22;).test(uri);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.JsonValidation" id="apidoc.module.z-schema.JsonValidation">module z-schema.JsonValidation</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.JsonValidation.validate" id="apidoc.element.z-schema.JsonValidation.validate">
+        function <span class="apidocSignatureSpan">z-schema.JsonValidation.</span>validate
+        <span class="apidocSignatureSpan">(report, schema, json)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validate = function (report, schema, json) {
+
+    report.commonErrorMessage = &#x22;JSON_OBJECT_VALIDATION_FAILED&#x22;;
+
+    // check if schema is an object
+    var to = Utils.whatIs(schema);
+    if (to !== &#x22;object&#x22;) {
+        report.addError(&#x22;SCHEMA_NOT_AN_OBJECT&#x22;, [to], null, schema.description);
+        return false;
+    }
+
+    // check if schema is empty, everything is valid against empty schema
+    var keys = Object.keys(schema);
+    if (keys.length === 0) {
+        return true;
+    }
+
+    // this method can be called recursively, so we need to remember our root
+    var isRoot = false;
+    if (!report.rootSchema) {
+        report.rootSchema = schema;
+        isRoot = true;
+    }
+
+    // follow schema.$ref keys
+    if (schema.$ref !== undefined) {
+        // avoid infinite loop with maxRefs
+        var maxRefs = 99;
+        while (schema.$ref &#x26;&#x26; maxRefs &#x3e; 0) {
+            if (!schema.__$refResolved) {
+                report.addError(&#x22;REF_UNRESOLVED&#x22;, [schema.$ref], null, schema.description);
+                break;
+            } else if (schema.__$refResolved === schema) {
+                break;
+            } else {
+                schema = schema.__$refResolved;
+                keys = Object.keys(schema);
+            }
+            maxRefs--;
+        }
+        if (maxRefs === 0) {
+            throw new Error(&#x22;Circular dependency by $ref references!&#x22;);
+        }
+    }
+
+    // type checking first
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.5.2.2
+    var jsonType = Utils.whatIs(json);
+    if (schema.type) {
+        if (typeof schema.type === &#x22;string&#x22;) {
+            if (jsonType !== schema.type &#x26;&#x26; (jsonType !== &#x22;integer&#x22; || schema.type !== &#x22;number&#x22;)) {
+                report.addError(&#x22;INVALID_TYPE&#x22;, [schema.type, jsonType], null, schema.description);
+                if (this.options.breakOnFirstError) {
+                    return false;
+                }
+            }
+        } else {
+            if (schema.type.indexOf(jsonType) === -1 &#x26;&#x26; (jsonType !== &#x22;integer&#x22; || schema.type.indexOf(&#x22;number&#x22;) === -1)) {
+                report.addError(&#x22;INVALID_TYPE&#x22;, [schema.type, jsonType], null, schema.description);
+                if (this.options.breakOnFirstError) {
+                    return false;
+                }
+            }
+        }
+    }
+
+    // now iterate all the keys in schema and execute validation methods
+    var idx = keys.length;
+    while (idx--) {
+        if (JsonValidators[keys[idx]]) {
+            JsonValidators[keys[idx]].call(this, report, schema, json);
+            if (report.errors.length &#x26;&#x26; this.options.breakOnFirstError) { break; }
+        }
+    }
+
+    if (report.errors.length === 0 || this.options.breakOnFirstError === false) {
+        if (jsonType === &#x22;array&#x22;) {
+            recurseArray.call(this, report, schema, json);
+        } else if (jsonType === &#x22;object&#x22;) {
+            recurseObject.call(this, report, schema, json);
+        }
+    }
+
+    if (typeof this.options.customValidator === &#x22;function&#x22;) {
+        this.options.customValidator(report, schema, json);
+    }
+
+    // we don&#x27;t need the root pointer anymore
+    if (isRoot) {
+        report.rootSchema = undefined;
+    }
+
+    // return valid just to be able to break at some code points
+    return report.errors.length === 0;
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var options = ... // see below for possible option values
+var validator = new ZSchema(options);
+```
+
+##Sync mode:
+
+```javascript
+var valid = validator.<span class="apidocCodeKeywordSpan">validate</span>(json, schema);
+// this will return a native error object with name and message
+var error = validator.getLastError();
+// this will return an array of validation errors encountered
+var errors = validator.getLastErrors();
+...
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.Report" id="apidoc.module.z-schema.Report">module z-schema.Report</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.Report" id="apidoc.element.z-schema.Report.Report">
+        function <span class="apidocSignatureSpan">z-schema.</span>Report
+        <span class="apidocSignatureSpan">(parentOrOptions, reportOptions)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Report(parentOrOptions, reportOptions) {
+    this.parentReport = parentOrOptions instanceof Report ?
+                            parentOrOptions :
+                            undefined;
+
+    this.options = parentOrOptions instanceof Report ?
+                       parentOrOptions.options :
+                       parentOrOptions || {};
+
+    this.reportOptions = reportOptions || {};
+
+    this.errors = [];
+    this.path = [];
+    this.asyncTasks = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.Report.prototype" id="apidoc.module.z-schema.Report.prototype">module z-schema.Report.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.addAsyncTask" id="apidoc.element.z-schema.Report.prototype.addAsyncTask">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addAsyncTask
+        <span class="apidocSignatureSpan">(fn, args, asyncTaskResultProcessFn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addAsyncTask = function (fn, args, asyncTaskResultProcessFn) {
+    this.asyncTasks.push([fn, args, asyncTaskResultProcessFn]);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+},
+format: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.7.2
+    var formatValidatorFn = FormatValidators[schema.format];
+    if (typeof formatValidatorFn === &#x22;function&#x22;) {
+        if (formatValidatorFn.length === 2) {
+            // async
+            report.<span class="apidocCodeKeywordSpan">addAsyncTask</span>(formatValidatorFn, [json], function (result) {
+                if (result !== true) {
+                    report.addError(&#x22;INVALID_FORMAT&#x22;, [schema.format, json], null, schema.description);
+                }
+            });
+        } else {
+            // sync
+            if (formatValidatorFn.call(this, json) !== true) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.addCustomError" id="apidoc.element.z-schema.Report.prototype.addCustomError">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addCustomError
+        <span class="apidocSignatureSpan">(errorCode, errorMessage, params, subReports, schemaDescription)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addCustomError = function (errorCode, errorMessage, params, subReports, schemaDescription) {
+    if (this.errors.length &#x3e;= this.reportOptions.maxErrors) {
+        return;
+    }
+
+    if (!errorMessage) { throw new Error(&#x22;No errorMessage known for code &#x22; + errorCode); }
+
+    params = params || [];
+
+    var idx = params.length;
+    while (idx--) {
+        var whatIs = Utils.whatIs(params[idx]);
+        var param = (whatIs === &#x22;object&#x22; || whatIs === &#x22;null&#x22;) ? JSON.stringify(params[idx]) : params[idx];
+        errorMessage = errorMessage.replace(&#x22;{&#x22; + idx + &#x22;}&#x22;, param);
+    }
+
+    var err = {
+        code: errorCode,
+        params: params,
+        message: errorMessage,
+        path: this.getPath(this.options.reportPathAsArray),
+        schemaId: this.getSchemaId()
+    };
+
+    if (schemaDescription) {
+        err.description = schemaDescription;
+    }
+
+    if (subReports != null) {
+        if (!Array.isArray(subReports)) {
+            subReports = [subReports];
+        }
+        err.inner = [];
+        idx = subReports.length;
+        while (idx--) {
+            var subReport = subReports[idx],
+                idx2 = subReport.errors.length;
+            while (idx2--) {
+                err.inner.push(subReport.errors[idx2]);
+            }
+        }
+        if (err.inner.length === 0) {
+            err.inner = undefined;
+        }
+    }
+
+    this.errors.push(err);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+if (Array.isArray(schema.uniqueProperties)) {
+    var seenValues = [];
+    schema.uniqueProperties.forEach(function (prop) {
+        var value = json[prop];
+        if (typeof value !== &#x27;undefined&#x27;) {
+            if (seenValues.indexOf(value) !== -1) {
+                // report error back to z-schema core
+                report.<span class="apidocCodeKeywordSpan">addCustomError</span>(&#x22;NON_UNIQUE_PROPERTY_VALUE&#x22;,
+                    &#x22;Property \&#x22;{0}\&#x22; has non-unique value: {1}&#x22;,
+                    [prop, value], null, schema.description);
+            }
+            seenValues.push(value)
+        }
+    });
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.addError" id="apidoc.element.z-schema.Report.prototype.addError">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>addError
+        <span class="apidocSignatureSpan">(errorCode, params, subReports, schemaDescription)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">addError = function (errorCode, params, subReports, schemaDescription) {
+    if (!errorCode) { throw new Error(&#x22;No errorCode passed into addError()&#x22;); }
+
+    this.addCustomError(errorCode, Errors[errorCode], params, subReports, schemaDescription);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var JsonValidators = {
+multipleOf: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.1.1.2
+    if (typeof json !== &#x22;number&#x22;) {
+        return;
+    }
+    if (Utils.whatIs(json / schema.multipleOf) !== &#x22;integer&#x22;) {
+        report.<span class="apidocCodeKeywordSpan">addError</span>(&#x22;MULTIPLE_OF&#x22;, [json, schema.multipleOf], null, schema
+.description);
+    }
+},
+maximum: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.1.2.2
+    if (typeof json !== &#x22;number&#x22;) {
+        return;
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.getPath" id="apidoc.element.z-schema.Report.prototype.getPath">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>getPath
+        <span class="apidocSignatureSpan">(returnPathAsString)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getPath = function (returnPathAsString) {
+    var path = [];
+    if (this.parentReport) {
+        path = path.concat(this.parentReport.path);
+    }
+    path = path.concat(this.path);
+
+    if (returnPathAsString !== true) {
+        // Sanitize the path segments (http://tools.ietf.org/html/rfc6901#section-4)
+        path = &#x22;#/&#x22; + path.map(function (segment) {
+
+            if (Utils.isAbsoluteUri(segment)) {
+                return &#x22;uri(&#x22; + segment + &#x22;)&#x22;;
+            }
+
+            return segment.replace(/\~/g, &#x22;~0&#x22;).replace(/\//g, &#x22;~1&#x22;);
+        }).join(&#x22;/&#x22;);
+    }
+    return path;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    errorMessage = errorMessage.replace(&#x22;{&#x22; + idx + &#x22;}&#x22;, param);
+}
+
+var err = {
+    code: errorCode,
+    params: params,
+    message: errorMessage,
+    path: this.<span class="apidocCodeKeywordSpan">getPath</span>(this.options.reportPathAsArray),
+    schemaId: this.getSchemaId()
+};
+
+if (schemaDescription) {
+    err.description = schemaDescription;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.getSchemaId" id="apidoc.element.z-schema.Report.prototype.getSchemaId">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>getSchemaId
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getSchemaId = function () {
+
+    if (!this.rootSchema) {
+        return null;
+    }
+
+    // get the error path as an array
+    var path = [];
+    if (this.parentReport) {
+        path = path.concat(this.parentReport.path);
+    }
+    path = path.concat(this.path);
+
+    // try to find id in the error path
+    while (path.length &#x3e; 0) {
+        var obj = get(this.rootSchema, path);
+        if (obj &#x26;&#x26; obj.id) { return obj.id; }
+        path.pop();
+    }
+
+    // return id of the root
+    return this.rootSchema.id;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+var err = {
+    code: errorCode,
+    params: params,
+    message: errorMessage,
+    path: this.getPath(this.options.reportPathAsArray),
+    schemaId: this.<span class="apidocCodeKeywordSpan">getSchemaId</span>()
+};
+
+if (schemaDescription) {
+    err.description = schemaDescription;
+}
+
+if (subReports != null) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.hasError" id="apidoc.element.z-schema.Report.prototype.hasError">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>hasError
+        <span class="apidocSignatureSpan">(errorCode, params)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">hasError = function (errorCode, params) {
+    var idx = this.errors.length;
+    while (idx--) {
+        if (this.errors[idx].code === errorCode) {
+            // assume match
+            var match = true;
+
+            // check the params too
+            var idx2 = this.errors[idx].params.length;
+            while (idx2--) {
+                if (this.errors[idx].params[idx2] !== params[idx2]) {
+                    match = false;
+                }
+            }
+
+            // if match, return true
+            if (match) { return match; }
+        }
+    }
+    return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        }
+    }
+}
+        }
+
+        if (!response) {
+
+var hasNotValid = report.<span class="apidocCodeKeywordSpan">hasError</span>(&#x22;REMOTE_NOT_VALID&#x22;, [refObj.ref]);
+var isAbsolute = Utils.isAbsoluteUri(refObj.ref);
+var isDownloaded = false;
+var ignoreUnresolvableRemotes = this.options.ignoreUnresolvableReferences === true;
+
+if (isAbsolute) {
+    // we shouldn&#x27;t add UNRESOLVABLE_REFERENCE for schemas we already have downloaded
+    // and set through setRemoteReference method
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.isValid" id="apidoc.element.z-schema.Report.prototype.isValid">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>isValid
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isValid = function () {
+    if (this.asyncTasks.length &#x3e; 0) {
+        throw new Error(&#x22;Async tasks pending, can&#x27;t answer isValid&#x22;);
+    }
+    return this.errors.length === 0;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+report.path.push(remotePath);
+
+var remoteReport = new Report(report);
+if (SchemaCompilation.compileSchema.call(this, remoteReport, result)) {
+    SchemaValidation.validateSchema.call(this, remoteReport, result);
+}
+var remoteReportIsValid = remoteReport.<span class="apidocCodeKeywordSpan">isValid</span>();
+if (!remoteReportIsValid) {
+    report.addError(&#x22;REMOTE_NOT_VALID&#x22;, [uri], remoteReport);
+}
+
+report.path.pop();
+
+if (!remoteReportIsValid) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Report.prototype.processAsyncTasks" id="apidoc.element.z-schema.Report.prototype.processAsyncTasks">
+        function <span class="apidocSignatureSpan">z-schema.Report.prototype.</span>processAsyncTasks
+        <span class="apidocSignatureSpan">(timeout, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">processAsyncTasks = function (timeout, callback) {
+
+    var validationTimeout = timeout || 2000,
+        tasksCount        = this.asyncTasks.length,
+        idx               = tasksCount,
+        timedOut          = false,
+        self              = this;
+
+    function finish() {
+        process.nextTick(function () {
+            var valid = self.errors.length === 0,
+                err   = valid ? undefined : self.errors;
+            callback(err, valid);
+        });
+    }
+
+    function respond(asyncTaskResultProcessFn) {
+        return function (asyncTaskResult) {
+            if (timedOut) { return; }
+            asyncTaskResultProcessFn(asyncTaskResult);
+            if (--tasksCount === 0) {
+                finish();
+            }
+        };
+    }
+
+    if (tasksCount === 0 || this.errors.length &#x3e; 0) {
+        finish();
+        return;
+    }
+
+    while (idx--) {
+        var task = this.asyncTasks[idx];
+        task[0].apply(null, task[1].concat(respond(task[2])));
+    }
+
+    setTimeout(function () {
+        if (tasksCount &#x3e; 0) {
+            timedOut = true;
+            self.addError(&#x22;ASYNC_TIMEOUT&#x22;, [tasksCount, validationTimeout]);
+            callback(self.errors, false);
+        }
+    }, validationTimeout);
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.SchemaCache" id="apidoc.module.z-schema.SchemaCache">module z-schema.SchemaCache</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.cacheSchemaByUri" id="apidoc.element.z-schema.SchemaCache.cacheSchemaByUri">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>cacheSchemaByUri
+        <span class="apidocSignatureSpan">(uri, schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cacheSchemaByUri = function (uri, schema) {
+    var remotePath = getRemotePath(uri);
+    if (remotePath) {
+        this.cache[remotePath] = schema;
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.checkCacheForUri" id="apidoc.element.z-schema.SchemaCache.checkCacheForUri">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>checkCacheForUri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">checkCacheForUri = function (uri) {
+    var remotePath = getRemotePath(uri);
+    return remotePath ? this.cache[remotePath] != null : false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.getRemotePath" id="apidoc.element.z-schema.SchemaCache.getRemotePath">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getRemotePath
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function getRemotePath(uri) {
+    var io = uri.indexOf(&#x22;#&#x22;);
+    return io === -1 ? uri : uri.slice(0, io);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.getSchema" id="apidoc.element.z-schema.SchemaCache.getSchema">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchema
+        <span class="apidocSignatureSpan">(report, schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getSchema = function (report, schema) {
+    if (typeof schema === &#x22;object&#x22;) {
+        schema = exports.getSchemaByReference.call(this, report, schema);
+    }
+    if (typeof schema === &#x22;string&#x22;) {
+        schema = exports.getSchemaByUri.call(this, report, schema);
+    }
+    return schema;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.getSchemaByReference" id="apidoc.element.z-schema.SchemaCache.getSchemaByReference">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchemaByReference
+        <span class="apidocSignatureSpan">(report, key)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getSchemaByReference = function (report, key) {
+    var i = this.referenceCache.length;
+    while (i--) {
+        if (isequal(this.referenceCache[i][0], key)) {
+            return this.referenceCache[i][1];
+        }
+    }
+    // not found
+    var schema = Utils.cloneDeep(key);
+    this.referenceCache.push([key, schema]);
+    return schema;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.getSchemaByUri" id="apidoc.element.z-schema.SchemaCache.getSchemaByUri">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>getSchemaByUri
+        <span class="apidocSignatureSpan">(report, uri, root)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getSchemaByUri = function (report, uri, root) {
+    var remotePath = getRemotePath(uri),
+        queryPath = getQueryPath(uri),
+        result = remotePath ? this.cache[remotePath] : root;
+
+    if (result &#x26;&#x26; remotePath) {
+        // we need to avoid compiling schemas in a recursive loop
+        var compileRemote = result !== root;
+        // now we need to compile and validate resolved schema (in case it&#x27;s not already)
+        if (compileRemote) {
+
+            report.path.push(remotePath);
+
+            var remoteReport = new Report(report);
+            if (SchemaCompilation.compileSchema.call(this, remoteReport, result)) {
+                SchemaValidation.validateSchema.call(this, remoteReport, result);
+            }
+            var remoteReportIsValid = remoteReport.isValid();
+            if (!remoteReportIsValid) {
+                report.addError(&#x22;REMOTE_NOT_VALID&#x22;, [uri], remoteReport);
+            }
+
+            report.path.pop();
+
+            if (!remoteReportIsValid) {
+                return undefined;
+            }
+        }
+    }
+
+    if (result &#x26;&#x26; queryPath) {
+        var parts = queryPath.split(&#x22;/&#x22;);
+        for (var idx = 0, lim = parts.length; result &#x26;&#x26; idx &#x3c; lim; idx++) {
+            var key = decodeJSONPointer(parts[idx]);
+            if (idx === 0) { // it&#x27;s an id
+                result = findId(result, key);
+            } else { // it&#x27;s a path behind id
+                result = result[key];
+            }
+        }
+    }
+
+    return result;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCache.removeFromCacheByUri" id="apidoc.element.z-schema.SchemaCache.removeFromCacheByUri">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCache.</span>removeFromCacheByUri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">removeFromCacheByUri = function (uri) {
+    var remotePath = getRemotePath(uri);
+    if (remotePath) {
+        delete this.cache[remotePath];
+    }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.SchemaCompilation" id="apidoc.module.z-schema.SchemaCompilation">module z-schema.SchemaCompilation</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaCompilation.compileSchema" id="apidoc.element.z-schema.SchemaCompilation.compileSchema">
+        function <span class="apidocSignatureSpan">z-schema.SchemaCompilation.</span>compileSchema
+        <span class="apidocSignatureSpan">(report, schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">compileSchema = function (report, schema) {
+
+    report.commonErrorMessage = &#x22;SCHEMA_COMPILATION_FAILED&#x22;;
+
+    // if schema is a string, assume it&#x27;s a uri
+    if (typeof schema === &#x22;string&#x22;) {
+        var loadedSchema = SchemaCache.getSchemaByUri.call(this, report, schema);
+        if (!loadedSchema) {
+            report.addError(&#x22;SCHEMA_NOT_REACHABLE&#x22;, [schema]);
+            return false;
+        }
+        schema = loadedSchema;
+    }
+
+    // if schema is an array, assume it&#x27;s an array of schemas
+    if (Array.isArray(schema)) {
+        return compileArrayOfSchemas.call(this, report, schema);
+    }
+
+    // if we have an id than it should be cached already (if this instance has compiled it)
+    if (schema.__$compiled &#x26;&#x26; schema.id &#x26;&#x26; SchemaCache.checkCacheForUri.call(this, schema.id) === false) {
+        schema.__$compiled = undefined;
+    }
+
+    // do not re-compile schemas
+    if (schema.__$compiled) {
+        return true;
+    }
+
+    if (schema.id &#x26;&#x26; typeof schema.id === &#x22;string&#x22;) {
+        // add this to our schemaCache (before compilation in case we have references including id)
+        SchemaCache.cacheSchemaByUri.call(this, schema.id, schema);
+    }
+
+    // this method can be called recursively, so we need to remember our root
+    var isRoot = false;
+    if (!report.rootSchema) {
+        report.rootSchema = schema;
+        isRoot = true;
+    }
+
+    // delete all __$missingReferences from previous compilation attempts
+    var isValidExceptReferences = report.isValid();
+    delete schema.__$missingReferences;
+
+    // collect all references that need to be resolved - $ref and $schema
+    var refs = collectReferences.call(this, schema),
+        idx = refs.length;
+    while (idx--) {
+        // resolve all the collected references into __xxxResolved pointer
+        var refObj = refs[idx];
+        var response = SchemaCache.getSchemaByUri.call(this, report, refObj.ref, schema);
+
+        // we can try to use custom schemaReader if available
+        if (!response) {
+            var schemaReader = this.getSchemaReader();
+            if (schemaReader) {
+                // it&#x27;s supposed to return a valid schema
+                var s = schemaReader(refObj.ref);
+                if (s) {
+                    // it needs to have the id
+                    s.id = refObj.ref;
+                    // try to compile the schema
+                    var subreport = new Report(report);
+                    if (!exports.compileSchema.call(this, subreport, s)) {
+                        // copy errors to report
+                        report.errors = report.errors.concat(subreport.errors);
+                    } else {
+                        response = SchemaCache.getSchemaByUri.call(this, report, refObj.ref, schema);
+                    }
+                }
+            }
+        }
+
+        if (!response) {
+
+            var hasNotValid = report.hasError(&#x22;REMOTE_NOT_VALID&#x22;, [refObj.ref]);
+            var isAbsolute = Utils.isAbsoluteUri(refObj.ref);
+            var isDownloaded = false;
+            var ignoreUnresolvableRemotes = this.options.ignoreUnresolvableReferences === true;
+
+            if (isAbsolute) {
+                // we shouldn&#x27;t add UNRESOLVABLE_REFERENCE for schemas we already have downloaded
+                // and set through setRemoteReference method
+                isDownloaded = SchemaCache.checkCacheForUri.call(this, refObj.ref);
+            }
+
+            if (hasNotValid) {
+                // already has REMOTE_NOT_VALID error for this one
+            } else if (ignoreUnresolvableRemotes &#x26;&#x26; isAbsolute) {
+                // ignoreUnresolvableRemotes is on and remote isAbsolute
+            } else if (isDownloaded) {
+                // remote is downloaded, so no UNRESOLVABLE_REFERENCE
+            } else {
+                Array.prototype.push.apply(report.path, refObj.path);
+                report.addError(&#x22;UNRESOLVABLE_REFERENCE&#x22;, [refObj.ref]);
+                report.path = report.path.slice(0, -refObj.path.length);
+
+                // pusblish unresolved references out
+                if (isValidExceptReferences) {
+                    schema ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.SchemaValidation" id="apidoc.module.z-schema.SchemaValidation">module z-schema.SchemaValidation</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.SchemaValidation.validateSchema" id="apidoc.element.z-schema.SchemaValidation.validateSchema">
+        function <span class="apidocSignatureSpan">z-schema.SchemaValidation.</span>validateSchema
+        <span class="apidocSignatureSpan">(report, schema)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">validateSchema = function (report, schema) {
+
+    report.commonErrorMessage = &#x22;SCHEMA_VALIDATION_FAILED&#x22;;
+
+    // if schema is an array, assume it&#x27;s an array of schemas
+    if (Array.isArray(schema)) {
+        return validateArrayOfSchemas.call(this, report, schema);
+    }
+
+    // do not revalidate schema that has already been validated once
+    if (schema.__$validated) {
+        return true;
+    }
+
+    // if $schema is present, this schema should validate against that $schema
+    var hasParentSchema = schema.$schema &#x26;&#x26; schema.id !== schema.$schema;
+    if (hasParentSchema) {
+        if (schema.__$schemaResolved &#x26;&#x26; schema.__$schemaResolved !== schema) {
+            var subReport = new Report(report);
+            var valid = JsonValidation.validate.call(this, subReport, schema.__$schemaResolved, schema);
+            if (valid === false) {
+                report.addError(&#x22;PARENT_SCHEMA_VALIDATION_FAILED&#x22;, null, subReport);
+            }
+        } else {
+            if (this.options.ignoreUnresolvableReferences !== true) {
+                report.addError(&#x22;REF_UNRESOLVED&#x22;, [schema.$schema]);
+            }
+        }
+    }
+
+    if (this.options.noTypeless === true) {
+        // issue #36 - inherit type to anyOf, oneOf, allOf if noTypeless is defined
+        if (schema.type !== undefined) {
+            var schemas = [];
+            if (Array.isArray(schema.anyOf)) { schemas = schemas.concat(schema.anyOf); }
+            if (Array.isArray(schema.oneOf)) { schemas = schemas.concat(schema.oneOf); }
+            if (Array.isArray(schema.allOf)) { schemas = schemas.concat(schema.allOf); }
+            schemas.forEach(function (sch) {
+                if (!sch.type) { sch.type = schema.type; }
+            });
+        }
+        // end issue #36
+        if (schema.enum === undefined &#x26;&#x26;
+            schema.type === undefined &#x26;&#x26;
+            schema.anyOf === undefined &#x26;&#x26;
+            schema.oneOf === undefined &#x26;&#x26;
+            schema.not === undefined &#x26;&#x26;
+            schema.$ref === undefined) {
+            report.addError(&#x22;KEYWORD_UNDEFINED_STRICT&#x22;, [&#x22;type&#x22;]);
+        }
+    }
+
+    var keys = Object.keys(schema),
+        idx = keys.length;
+    while (idx--) {
+        var key = keys[idx];
+        if (key.indexOf(&#x22;__&#x22;) === 0) { continue; }
+        if (SchemaValidators[key] !== undefined) {
+            SchemaValidators[key].call(this, report, schema);
+        } else if (!hasParentSchema) {
+            if (this.options.noExtraKeywords === true) {
+                report.addError(&#x22;KEYWORD_UNEXPECTED&#x22;, [key]);
+            }
+        }
+    }
+
+    if (this.options.pedanticCheck === true) {
+        if (schema.enum) {
+            // break recursion
+            var tmpSchema = Utils.clone(schema);
+            delete tmpSchema.enum;
+            delete tmpSchema.default;
+
+            report.path.push(&#x22;enum&#x22;);
+            idx = schema.enum.length;
+            while (idx--) {
+                report.path.push(idx.toString());
+                JsonValidation.validate.call(this, report, tmpSchema, schema.enum[idx]);
+                report.path.pop();
+            }
+            report.path.pop();
+        }
+
+        if (schema.default) {
+            report.path.push(&#x22;default&#x22;);
+            JsonValidation.validate.call(this, report, schema, schema.default);
+            report.path.pop();
+        }
+    }
+
+    var isValid = report.isValid();
+    if (isValid) {
+        schema.__$validated = true;
+    }
+    return isValid;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    street: &#x22;George St&#x22;,
+    city: &#x22;Sydney&#x22;
+};
+
+var validator = new ZSchema();
+
+// compile &#x26; validate schemas first, z-schema will automatically handle array
+var allSchemasValid = validator.<span class="apidocCodeKeywordSpan">validateSchema</span>(schemas);
+// allSchemasValid === true
+
+// now validate our data against the last schema
+var valid = validator.validate(data, schemas[2]);
+// valid === true
+```
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.z-schema.Utils" id="apidoc.module.z-schema.Utils">module z-schema.Utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.areEqual" id="apidoc.element.z-schema.Utils.areEqual">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>areEqual
+        <span class="apidocSignatureSpan">(json1, json2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function areEqual(json1, json2) {
+    // http://json-schema.org/latest/json-schema-core.html#rfc.section.3.6
+
+    // Two JSON values are said to be equal if and only if:
+    // both are nulls; or
+    // both are booleans, and have the same value; or
+    // both are strings, and have the same value; or
+    // both are numbers, and have the same mathematical value; or
+    if (json1 === json2) {
+        return true;
+    }
+
+    var i, len;
+
+    // both are arrays, and:
+    if (Array.isArray(json1) &#x26;&#x26; Array.isArray(json2)) {
+        // have the same number of items; and
+        if (json1.length !== json2.length) {
+            return false;
+        }
+        // items at the same index are equal according to this definition; or
+        len = json1.length;
+        for (i = 0; i &#x3c; len; i++) {
+            if (!areEqual(json1[i], json2[i])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // both are objects, and:
+    if (exports.whatIs(json1) === &#x22;object&#x22; &#x26;&#x26; exports.whatIs(json2) === &#x22;object&#x22;) {
+        // have the same set of property names; and
+        var keys1 = Object.keys(json1);
+        var keys2 = Object.keys(json2);
+        if (!areEqual(keys1, keys2)) {
+            return false;
+        }
+        // values for a same property name are equal according to this definition.
+        len = keys1.length;
+        for (i = 0; i &#x3c; len; i++) {
+            if (!areEqual(json1[keys1[i]], json2[keys1[i]])) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    return false;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    }
+},
+enum: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.5.1.2
+    var match = false,
+        idx = schema.enum.length;
+    while (idx--) {
+        if (Utils.<span class="apidocCodeKeywordSpan">areEqual</span>(json, schema.enum[idx])) {
+            match = true;
+            break;
+        }
+    }
+    if (match === false) {
+        report.addError(&#x22;ENUM_MISMATCH&#x22;, [json], null, schema.description);
+    }
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.clone" id="apidoc.element.z-schema.Utils.clone">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>clone
+        <span class="apidocSignatureSpan">(src)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clone = function (src) {
+    if (typeof src === &#x22;undefined&#x22;) { return void 0; }
+    if (typeof src !== &#x22;object&#x22; || src === null) { return src; }
+    var res, idx;
+    if (Array.isArray(src)) {
+        res = [];
+        idx = src.length;
+        while (idx--) {
+            res[idx] = src[idx];
+        }
+    } else {
+        res = {};
+        var keys = Object.keys(src);
+        idx = keys.length;
+        while (idx--) {
+            var key = keys[idx];
+            res[key] = src[key];
+        }
+    }
+    return res;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+        }
+    }
+
+    if (this.options.pedanticCheck === true) {
+        if (schema.enum) {
+// break recursion
+var tmpSchema = Utils.<span class="apidocCodeKeywordSpan">clone</span>(schema);
+delete tmpSchema.enum;
+delete tmpSchema.default;
+
+report.path.push(&#x22;enum&#x22;);
+idx = schema.enum.length;
+while (idx--) {
+    report.path.push(idx.toString());
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.cloneDeep" id="apidoc.element.z-schema.Utils.cloneDeep">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>cloneDeep
+        <span class="apidocSignatureSpan">(src)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">cloneDeep = function (src) {
+    var visited = [], cloned = [];
+    function cloneDeep(src) {
+        if (typeof src !== &#x22;object&#x22; || src === null) { return src; }
+        var res, idx, cidx;
+
+        cidx = visited.indexOf(src);
+        if (cidx !== -1) { return cloned[cidx]; }
+
+        visited.push(src);
+        if (Array.isArray(src)) {
+            res = [];
+            cloned.push(res);
+            idx = src.length;
+            while (idx--) {
+                res[idx] = cloneDeep(src[idx]);
+            }
+        } else {
+            res = {};
+            cloned.push(res);
+            var keys = Object.keys(src);
+            idx = keys.length;
+            while (idx--) {
+                var key = keys[idx];
+                res[key] = cloneDeep(src[key]);
+            }
+        }
+        return res;
+    }
+    return cloneDeep(src);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var i = this.referenceCache.length;
+while (i--) {
+    if (isequal(this.referenceCache[i][0], key)) {
+        return this.referenceCache[i][1];
+    }
+}
+// not found
+var schema = Utils.<span class="apidocCodeKeywordSpan">cloneDeep</span>(key);
+this.referenceCache.push([key, schema]);
+return schema;
+};
+
+exports.getSchemaByUri = function (report, uri, root) {
+var remotePath = getRemotePath(uri),
+    queryPath = getQueryPath(uri),
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.difference" id="apidoc.element.z-schema.Utils.difference">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>difference
+        <span class="apidocSignatureSpan">(bigSet, subSet)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">difference = function (bigSet, subSet) {
+    var arr = [],
+        idx = bigSet.length;
+    while (idx--) {
+        if (subSet.indexOf(bigSet[idx]) === -1) {
+            arr.push(bigSet[idx]);
+        }
+    }
+    return arr;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+// The property set of the json to validate.
+var s = Object.keys(json);
+// The property set from &#x22;properties&#x22;.
+var p = Object.keys(properties);
+// The property set from &#x22;patternProperties&#x22;.
+var pp = Object.keys(patternProperties);
+// remove from &#x22;s&#x22; all elements of &#x22;p&#x22;, if any;
+s = Utils.<span class="apidocCodeKeywordSpan">difference</span>(s, p);
+// for each regex in &#x22;pp&#x22;, remove all elements of &#x22;s&#x22; which this regex matches.
+var idx = pp.length;
+while (idx--) {
+    var regExp = RegExp(pp[idx]),
+        idx2 = s.length;
+    while (idx2--) {
+        if (regExp.test(s[idx2]) === true) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.isAbsoluteUri" id="apidoc.element.z-schema.Utils.isAbsoluteUri">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>isAbsoluteUri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isAbsoluteUri = function (uri) {
+    return /^https?:\/\//.test(uri);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+path = path.concat(this.path);
+
+if (returnPathAsString !== true) {
+    // Sanitize the path segments (http://tools.ietf.org/html/rfc6901#section-4)
+    path = &#x22;#/&#x22; + path.map(function (segment) {
+
+        if (Utils.<span class="apidocCodeKeywordSpan">isAbsoluteUri</span>(segment)) {
+            return &#x22;uri(&#x22; + segment + &#x22;)&#x22;;
+        }
+
+        return segment.replace(/\~/g, &#x22;~0&#x22;).replace(/\//g, &#x22;~1&#x22;);
+    }).join(&#x22;/&#x22;);
+}
+return path;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.isRelativeUri" id="apidoc.element.z-schema.Utils.isRelativeUri">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>isRelativeUri
+        <span class="apidocSignatureSpan">(uri)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isRelativeUri = function (uri) {
+    // relative URIs that end with a hash sign, issue #56
+    return /.+#/.test(uri);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+function mergeReference(scope, ref) {
+if (Utils.isAbsoluteUri(ref)) {
+    return ref;
+}
+
+var joinedScope = scope.join(&#x22;&#x22;),
+    isScopeAbsolute = Utils.isAbsoluteUri(joinedScope),
+    isScopeRelative = Utils.<span class="apidocCodeKeywordSpan">isRelativeUri</span>(joinedScope),
+    isRefRelative = Utils.isRelativeUri(ref),
+    toRemove;
+
+if (isScopeAbsolute &#x26;&#x26; isRefRelative) {
+    toRemove = joinedScope.match(/\/[^\/]*$/);
+    if (toRemove) {
+        joinedScope = joinedScope.slice(0, toRemove.index + 1);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.isUniqueArray" id="apidoc.element.z-schema.Utils.isUniqueArray">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>isUniqueArray
+        <span class="apidocSignatureSpan">(arr, indexes)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isUniqueArray = function (arr, indexes) {
+    var i, j, l = arr.length;
+    for (i = 0; i &#x3c; l; i++) {
+        for (j = i + 1; j &#x3c; l; j++) {
+            if (exports.areEqual(arr[i], arr[j])) {
+                if (indexes) { indexes.push(i, j); }
+                return false;
+            }
+        }
+    }
+    return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+uniqueItems: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.3.4.2
+    if (!Array.isArray(json)) {
+        return;
+    }
+    if (schema.uniqueItems === true) {
+        var matches = [];
+        if (Utils.<span class="apidocCodeKeywordSpan">isUniqueArray</span>(json, matches) === false) {
+            report.addError(&#x22;ARRAY_UNIQUE&#x22;, matches, null, schema.description);
+        }
+    }
+},
+maxProperties: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.4.1.2
+    if (Utils.whatIs(json) !== &#x22;object&#x22;) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.ucs2decode" id="apidoc.element.z-schema.Utils.ucs2decode">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>ucs2decode
+        <span class="apidocSignatureSpan">(string)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ucs2decode = function (string) {
+    var output = [],
+        counter = 0,
+        length = string.length,
+        value,
+        extra;
+    while (counter &#x3c; length) {
+        value = string.charCodeAt(counter++);
+        if (value &#x3e;= 0xD800 &#x26;&#x26; value &#x3c;= 0xDBFF &#x26;&#x26; counter &#x3c; length) {
+            // high surrogate, and there is a next character
+            extra = string.charCodeAt(counter++);
+            if ((extra &#x26; 0xFC00) == 0xDC00) { // low surrogate
+                output.push(((value &#x26; 0x3FF) &#x3c;&#x3c; 10) + (extra &#x26; 0x3FF) + 0x10000);
+            } else {
+                // unmatched surrogate; only append this code unit, in case the next
+                // code unit is the high surrogate of a surrogate pair
+                output.push(value);
+                counter--;
+            }
+        } else {
+            output.push(value);
+        }
+    }
+    return output;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    // covered in minimum
+},
+maxLength: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.2.1.2
+    if (typeof json !== &#x22;string&#x22;) {
+        return;
+    }
+    if (Utils.<span class="apidocCodeKeywordSpan">ucs2decode</span>(json).length &#x3e; schema.maxLength) {
+        report.addError(&#x22;MAX_LENGTH&#x22;, [json.length, schema.maxLength], null, schema.description);
+    }
+},
+minLength: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.2.2.2
+    if (typeof json !== &#x22;string&#x22;) {
+        return;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.z-schema.Utils.whatIs" id="apidoc.element.z-schema.Utils.whatIs">
+        function <span class="apidocSignatureSpan">z-schema.Utils.</span>whatIs
+        <span class="apidocSignatureSpan">(what)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">whatIs = function (what) {
+
+    var to = typeof what;
+
+    if (to === &#x22;object&#x22;) {
+        if (what === null) {
+            return &#x22;null&#x22;;
+        }
+        if (Array.isArray(what)) {
+            return &#x22;array&#x22;;
+        }
+        return &#x22;object&#x22;; // typeof what === &#x27;object&#x27; &#x26;&#x26; what === Object(what) &#x26;&#x26; !Array.isArray(what);
+    }
+
+    if (to === &#x22;number&#x22;) {
+        if (Number.isFinite(what)) {
+            if (what % 1 === 0) {
+                return &#x22;integer&#x22;;
+            } else {
+                return &#x22;number&#x22;;
+            }
+        }
+        if (Number.isNaN(what)) {
+            return &#x22;not-a-number&#x22;;
+        }
+        return &#x22;unknown-number&#x22;;
+    }
+
+    return to; // undefined, boolean, string, function
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+var JsonValidators = {
+multipleOf: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.1.1.2
+    if (typeof json !== &#x22;number&#x22;) {
+        return;
+    }
+    if (Utils.<span class="apidocCodeKeywordSpan">whatIs</span>(json / schema.multipleOf) !== &#x22;integer&#x22;) {
+        report.addError(&#x22;MULTIPLE_OF&#x22;, [json, schema.multipleOf], null, schema.description);
+    }
+},
+maximum: function (report, schema, json) {
+    // http://json-schema.org/latest/json-schema-validation.html#rfc.section.5.1.2.2
+    if (typeof json !== &#x22;number&#x22;) {
+        return;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
