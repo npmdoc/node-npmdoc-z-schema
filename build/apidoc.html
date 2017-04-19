@@ -117,15 +117,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.z-schema.toString">
-            function <span class="apidocSignatureSpan">z-schema.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <a class="apidocElementLiA" href="#apidoc.element.z-schema.unregisterFormat">
             function <span class="apidocSignatureSpan">z-schema.</span>unregisterFormat
             <span class="apidocSignatureSpan">(formatName)</span>
@@ -746,37 +737,6 @@ ZSchema.<span class="apidocCodeKeywordSpan">setSchemaReader</span>(function (uri
 ```
 
 #Features
-...</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.z-schema.toString" id="apidoc.element.z-schema.toString">
-        function <span class="apidocSignatureSpan">z-schema.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-    // the child instance must be valid against the corresponding schema in the &#x22;items&#x22; array;
-    // otherwise, it must be valid against the schema defined by &#x22;additionalItems&#x22;.
-    if (Array.isArray(schema.items)) {
-
-while (idx--) {
-    // equal to doesnt make sense here
-    if (idx &#x3c; schema.items.length) {
-        report.path.push(idx.<span class="apidocCodeKeywordSpan">toString</span>());
-        exports.validate.call(this, report, schema.items[idx], json[idx]);
-        report.path.pop();
-    } else {
-        // might be boolean, so check that it&#x27;s an object
-        if (typeof schema.additionalItems === &#x22;object&#x22;) {
-            report.path.push(idx.toString());
-            exports.validate.call(this, report, schema.additionalItems, json[idx]);
 ...</pre></li>
     </ul>
 
